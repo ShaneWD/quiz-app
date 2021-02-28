@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     
     'users.apps.UsersConfig',
+    'main.apps.MainConfig',
 
     'django.contrib.sites',
     'allauth',
@@ -145,4 +146,4 @@ STATIC_URL = '/static/'
 
 AUTH_USER_MODEL = 'users.User'
 
-LOGIN_REDIRECT_URL = 'home'
+# LOGIN_REDIRECT_URL = 'home'
