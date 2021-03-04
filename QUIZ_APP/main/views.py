@@ -27,7 +27,7 @@ def test(request):
         "list": list_of_keys[1].data,
         "form": form,
     }
-    return render(request, "main/test.html", context)
+    return render(request, "main/quiz_list.html", context)
 
 
 @login_required

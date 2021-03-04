@@ -3,7 +3,8 @@
 {% for quiz in quizes %}
     <div>
         <h1>
-        {{quiz.created | date:"F y, Y"}}: "{{quiz.title}}"
+        <a href = "{% url 'view' quiz.id %}">{{quiz.created | date:"F y, Y"}}: "{{quiz.title}}"</a>
+        
         </h1>
     </div>
 {% endfor %}
