@@ -1,7 +1,11 @@
 {% extends 'main.html' %}
 {% block context %}
-<form method="POST">
-    {% csrf_token %}
-    {{form}}
-</form>
+{% for quiz in quizes %}
+    <div>
+        {{quiz.author}}
+        {{quiz.title}}
+        {{quiz.data}}
+        {{quiz.created}}
+    </div>
+{% endfor %}
 {% endblock context %}
