@@ -12,21 +12,12 @@ def home(request):
 
 
 @login_required
-def test(request):
-    form = QuizForm()
-    # obj = Quiz.objects.filter(data__has_key='What is 2+2?').first().data
+def the_list(request):
     user = request.user
-    list_of_keys = []
-    for objs in Quiz.objects.filter(author=user):
-        list_of_keys.append(objs)
-
     context = {
         "quizes": Quiz.objects.all(),
-        "data": Quiz,
-        "obj": objs,
-        "list": list_of_keys[1].data,
-        "form": form,
     }
+    
     return render(request, "main/quiz_list.html", context)
 
 
