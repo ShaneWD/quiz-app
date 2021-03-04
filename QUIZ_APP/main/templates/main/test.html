@@ -1,0 +1,7 @@
+{% extends 'main.html' %}
+{% block context %}
+<form method="POST">
+    {% csrf_token %}
+    {{form}}
+</form>
+{% endblock context %}
