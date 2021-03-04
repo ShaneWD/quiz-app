@@ -2,14 +2,9 @@
 {% block context %}
 {% for quiz in quizes %}
     <div>
-        {{quiz.author}}
-        {{quiz.title}}
-        {{quiz.data}}
-        {{quiz.created}}
+        <h1>
+        {{quiz.created | date:"F y, Y"}}: "{{quiz.title}}"
+        </h1>
     </div>
 {% endfor %}
-
-
-
-{{list}}
 {% endblock context %}
