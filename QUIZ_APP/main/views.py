@@ -15,7 +15,7 @@ def home(request):
 def the_list(request):
     user = request.user
     context = {
-        "quizes": Quiz.objects.all(),
+        "quizes": Quiz.objects.filter(author = user),
     }
     
     return render(request, "main/quiz_list.html", context)
