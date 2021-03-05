@@ -18,7 +18,9 @@ def the_list(request):
     user = request.user
     a_list = []
     for info in Quiz.objects.filter(author = user):
-        a_list.append(info.data.keys())
+        info = str(info.data.keys()).replace("dict_keys(['", "")
+        info = info.replace("'])", "")
+        a_list.append(info)
     
     context = {
         "quizes": Quiz.objects.filter(author = user),
