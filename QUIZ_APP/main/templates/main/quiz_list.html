@@ -1,0 +1,11 @@
+{% extends 'main.html' %}
+{% block context %}
+{% for quiz in quizes %}
+    <div>
+        <h1>
+        <a href = "{% url 'view' quiz.id %}">{{quiz.created | date:"F y, Y"}}: "{{quiz.title}}"</a>
+        
+        </h1>
+    </div>
+{% endfor %}
+{% endblock context %}
