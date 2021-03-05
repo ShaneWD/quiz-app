@@ -24,6 +24,13 @@
             </ul>
         </header>
         <main>
+        {% for message in messages %}
+            <div>
+                <h1 style="color: red; text-align: center">{{message}}</h1>
+            </div>
+            <br />
+            <br />
+        {% endfor %}
         {% block context %}
         {% endblock context %}
         </main>
