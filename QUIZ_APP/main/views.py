@@ -3,6 +3,8 @@ from django.http import HttpResponse
 from .models import Quiz
 from .forms import QuizForm
 from django.contrib.auth.decorators import login_required
+import json
+
 
 def home(request):
     context = {
@@ -14,8 +16,13 @@ def home(request):
 @login_required
 def the_list(request):
     user = request.user
+    a_list = []
+    for info in Quiz.objects.filter(author = user):
+        a_list.append(info.data.keys())
+    
     context = {
         "quizes": Quiz.objects.filter(author = user),
+        "data": a_list
     }
     
     return render(request, "main/quiz_list.html", context)
