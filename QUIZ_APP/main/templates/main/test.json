@@ -1,0 +1,6 @@
+{
+    "what is the color of the sky": {
+        "true": "blue",
+        "false": ["green", "violet", "red"]
+    }
+}

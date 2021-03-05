@@ -18,9 +18,17 @@ def the_list(request):
     user = request.user
     a_list = []
     for info in Quiz.objects.filter(author = user):
-        info = str(info.data.keys()).replace("dict_keys(['", "")
-        info = info.replace("'])", "")
-        a_list.append(info)
+        info1 = str(info.data.keys()).replace("dict_keys(['", "")
+        info1 = info1.replace("'])", "")
+        data = info.data[info1]
+        answer = info.data[info1]['true']
+        incorrect = info.data[info1]['false']
+        a_list.append(info1)
+        # info1 = title ( what is the color of the sky )
+        # data = the whole dictionary ( {'true': 'blue', 'false': ['green', 'violet', 'red']} )
+        # answer = value with the key of "true" (blue)
+        # incorrect = values with the key of "false" (['green', 'violet', 'red'])
+
     
     context = {
         "quizes": Quiz.objects.filter(author = user),
