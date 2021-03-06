@@ -3,7 +3,6 @@ from django.http import HttpResponse
 from .models import Quiz
 from .forms import QuizForm
 from django.contrib.auth.decorators import login_required
-import json
 
 
 def home(request):
@@ -20,14 +19,15 @@ def the_list(request):
     answer_list = []
     incorrect_list = []
     for info in Quiz.objects.filter(author = user):
-        title = str(info.data.keys()).replace("dict_keys(['", "")
-        title = title.replace("'])", "")
-        data = info.data[title]
-        answer = info.data[title]['true']
-        incorrect = info.data[title]['false']
-        title_list.append(title)
-        answer_list.append(answer)
-        incorrect_list.append(incorrect)
+        for title in info.data.keys():
+            title = title.replace("dict_keys(['", "")
+            title = title.replace("'])", "")
+            data = info.data[title]
+            answer = info.data[title]['true']
+            incorrect = info.data[title]['false']
+            title_list.append(title)
+            answer_list.append(answer)
+            incorrect_list.append(incorrect)
         # title = title ( what is the color of the sky )
         # data = the whole dictionary ( {'true': 'blue', 'false': ['green', 'violet', 'red']} )
         # answer = value with the key of "true" (blue)

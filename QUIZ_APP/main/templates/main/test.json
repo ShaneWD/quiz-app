@@ -1,6 +1,10 @@
 {
-    "what is the color of the sky": {
-        "true": "blue",
-        "false": ["green", "violet", "red"]
+    "Who was Abraham Lincoln": {
+        "true": "16th U.S. President of the U.S",
+        "false": ["a poet", "a professional athlete", "a mechanic"]
+    },
+    "When was the Declaration of Independence signed ": {
+        "true": "1776",
+        "false": ["1868", "1492", "1914"]
     }
 }
