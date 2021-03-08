@@ -1,5 +1,4 @@
 from django.shortcuts import render
-from django.http import HttpResponse
 from .models import Quiz
 from .forms import QuizForm
 from django.contrib.auth.decorators import login_required
@@ -18,6 +17,7 @@ def the_list(request):
     title_list = []
     answer_list = []
     incorrect_list = []
+    all_list=[]
     for info in Quiz.objects.filter(author = user):
         for title in info.data.keys():
             title = title.replace("dict_keys(['", "")
@@ -28,6 +28,9 @@ def the_list(request):
             title_list.append(title)
             answer_list.append(answer)
             incorrect_list.append(incorrect)
+            all_list.append(title)
+            all_list.append(answer)
+            all_list = all_list + incorrect
         # title = title ( what is the color of the sky )
         # data = the whole dictionary ( {'true': 'blue', 'false': ['green', 'violet', 'red']} )
         # answer = value with the key of "true" (blue)
@@ -39,6 +42,7 @@ def the_list(request):
         "title": title_list,
         "answer_list": answer_list,
         "incorrect_list": incorrect_list,
+        "all_list": all_list,
     }
     
     return render(request, "main/quiz_list.html", context)
