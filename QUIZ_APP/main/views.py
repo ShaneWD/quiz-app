@@ -2,6 +2,7 @@ from django.shortcuts import render
 from .models import Quiz
 from .forms import QuizForm
 from django.contrib.auth.decorators import login_required
+import random
 
 
 def home(request):
@@ -27,10 +28,13 @@ def the_list(request):
             incorrect = info.data[title]['false']
             title_list.append(title)
             answer_list.append(answer)
-            incorrect_list.append(incorrect)
             all_list.append(title)
-            all_list.append(answer)
-            all_list = all_list + incorrect
+            random_list = []
+            random_list.append(answer)
+            for i in incorrect:
+                random_list.append(i)
+            random.shuffle(random_list)
+            all_list.append(random_list)
         # title = title ( what is the color of the sky )
         # data = the whole dictionary ( {'true': 'blue', 'false': ['green', 'violet', 'red']} )
         # answer = value with the key of "true" (blue)
