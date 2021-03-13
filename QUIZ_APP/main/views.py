@@ -15,12 +15,22 @@ def home(request):
 @login_required
 def the_list(request):
     user = request.user
+    context = {
+        "quizes": Quiz.objects.filter(author = user),
+    }
+    
+    return render(request, "main/quiz_list.html", context)
+
+
+@login_required
+def view(request, pk):
+    user = request.user
     title_list = []
     answer_list = []
     incorrect_list = []
     all_list=[]
-    for info in Quiz.objects.filter(author = user):
-        for title in info.data.keys():
+    info = Quiz.objects.get(id=pk, author=user)
+    for title in info.data.keys():
             title = title.replace("dict_keys(['", "")
             title = title.replace("'])", "")
             data = info.data[title]
@@ -39,24 +49,8 @@ def the_list(request):
         # data = the whole dictionary ( {'true': 'blue', 'false': ['green', 'violet', 'red']} )
         # answer = value with the key of "true" (blue)
         # incorrect = values with the key of "false" (['green', 'violet', 'red'])
-
-    
     context = {
-        "quizes": Quiz.objects.filter(author = user),
-        "title": title_list,
-        "answer_list": answer_list,
-        "incorrect_list": incorrect_list,
-        "all_list": all_list,
-    }
-    
-    return render(request, "main/quiz_list.html", context)
-
-
-@login_required
-def view(request, pk):
-    user = request.user
-    quiz = Quiz.objects.get(id=pk, author=user)
-    context = {
-        'quiz': quiz
+        #'quiz': quiz,
+        'all_list': all_list
     }
     return render(request, "main/detail_view.html", context)
