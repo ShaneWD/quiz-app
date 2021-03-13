@@ -1,20 +1,8 @@
 {% extends 'main.html' %}
 {% block context %}
-    
-    <div>
-        <h1>Title</h1>
-        {{quiz.title}}
-    </div>
-    <div>
-        <h1>Author</h1>
-        {{quiz.author}}
-    </div>
-    <div>
-        <h1>Data</h1>
-        {{quiz.data}}
-    </div>
-    <div>
-        <h1>Date created</h1>
-        {{quiz.created}}
-    </div>
+<div>
+    {% for data in all_list%}
+        <h1>{{data}}</h1>
+    {% endfor %}
+</div>
 {% endblock context %}
