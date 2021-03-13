@@ -8,34 +8,4 @@
         </h1>
     </div>
 {% endfor %}
-
-<div>
-    {% for data in all_list%}
-        <h1>{{data}}</h1>
-    {% endfor %}
-</div>
-<div>
-    {{answer_list}} 
-</div>
-<div>
-    {{incorrect_list}}
-</div>
-
-
-
-{% for info in title %}
-<div>
-    {{info}}
-</div>
-{% endfor %}
-{% for info in answer_list %}
-<div>
-    {{info}}
-</div>
-{% endfor %}
-{% for info in incorrect_list %}
-<div>
-    {{info}}
-</div>
-{% endfor %}
 {% endblock context %}
