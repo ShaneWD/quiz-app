@@ -2,6 +2,7 @@ from django.shortcuts import render
 from .models import Quiz
 from .forms import QuizForm
 from django.contrib.auth.decorators import login_required
+from django.http import HttpResponse
 import random
 
 
@@ -25,6 +26,8 @@ def the_list(request):
 @login_required
 def view(request, pk):
     user = request.user
+    if request.method == "POST":
+        return HttpResponse("<h1>Hello</h1>")
     title_list = []
     answer_list = []
     all_list=[]

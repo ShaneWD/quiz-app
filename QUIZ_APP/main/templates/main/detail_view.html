@@ -5,8 +5,9 @@
         <h1>{{data}}</h1>
     {% endfor %}
 </div>
-<form>
+<form method='POST'>
     <div>
+        {% csrf_token %}
         <input type="checkbox" id="choice_1" name="choice_1" value="choice_1">
         <label for="choice_1">Choice 1</label>
 
