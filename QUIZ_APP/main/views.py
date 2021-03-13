@@ -27,13 +27,11 @@ def view(request, pk):
     user = request.user
     title_list = []
     answer_list = []
-    incorrect_list = []
     all_list=[]
     info = Quiz.objects.get(id=pk, author=user)
     for title in info.data.keys():
             title = title.replace("dict_keys(['", "")
             title = title.replace("'])", "")
-            data = info.data[title]
             answer = info.data[title]['true']
             incorrect = info.data[title]['false']
             title_list.append(title)
