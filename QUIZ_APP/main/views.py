@@ -27,7 +27,19 @@ def the_list(request):
 def view(request, pk):
     user = request.user
     if request.method == "POST":
-        return HttpResponse("<h1>Hello</h1>")
+        # checkbox #1
+        choice_1 = request.POST.get('choice_1')
+
+        # checkbox #2
+        choice_2 = request.POST.get('choice_2')
+
+        # Checkbox #3
+        choice_3 = request.POST.get('choice_3')
+
+        #Checkbox #4
+        choice_4 = request.POST.get('choice_4')
+
+        return HttpResponse()
     title_list = []
     answer_list = []
     all_list=[]
